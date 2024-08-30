@@ -35,7 +35,7 @@ const handler = NextAuth({
         password: {},
       },
       async authorize(credentials, req) {
-        const response = await fetch(process.env.NEXTAUTH_URL + "/api/login", {
+        const response = await fetch("https://kudosware-task.vercel.app/api/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(credentials),
