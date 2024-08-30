@@ -13,8 +13,7 @@ export async function DELETE(req: NextRequest, id: { params: { id: number } }) {
         user: true,
       },
     });
-    const destinationDirPath = path.join(process.cwd(), "public/upload");
-    fs.unlinkSync(path.join(destinationDirPath, resume.name));
+    fs.unlinkSync("/tmp/"+resume.name);
     await prisma.userresume.delete({
       where: {
         id: Number(id.params.id),
