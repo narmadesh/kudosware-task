@@ -97,7 +97,7 @@ export default function UserResume() {
                                         <tr className="bg-white rounded-lg" key={key}>
                                             <td className="">{e.name}</td>
                                             <td className="flex gap-4">
-                                                <a href={`/upload/${e.name}`} className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400" target="_blank">View</a>
+                                                <a href={`/tmp/${e.name}`} className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400" target="_blank">View</a>
                                                 <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-none focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:hover:text-red-400 dark:focus:text-red-400" onClick={() => { setShowModal(!showModal); setType('delete'); setResume(e) }}>Delete</button>
                                             </td>
                                         </tr>
