@@ -14,15 +14,15 @@ export async function POST(req: NextRequest) {
   const f = body.get("file");
   const file = f as File;
 
-  const destinationDirPath = path.join(process.cwd(), "public/upload");
+  // const destinationDirPath = path.join(process.cwd(), "public/upload");
 
   const fileArrayBuffer = await file.arrayBuffer();
 
-  if (!existsSync(destinationDirPath)) {
-    fs.mkdir(destinationDirPath, { recursive: true });
-  }
+  // if (!existsSync(destinationDirPath)) {
+  //   fs.mkdir(destinationDirPath, { recursive: true });
+  // }
   await fs.writeFile(
-    path.join(destinationDirPath, file.name),
+    path.join("pubic/"+file.name),
     Buffer.from(fileArrayBuffer)
   );
   const resume = await prisma.userresume.create({
