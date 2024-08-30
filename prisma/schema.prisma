@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id             Int              @id @default(autoincrement())
+  email          String           @unique(map: "User_email_key")
+  name           String
+  password       String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  usereducation  usereducation[]
+  userexperience userexperience[]
+  userresume     userresume[]
+}
+
+model usereducation {
+  id               Int      @id @default(autoincrement())
+  degree           String
+  university       String
+  yearOfCompletion String
+  score            String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  userId           Int
+  user             user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserEducation_userId_fkey")
+
+  @@index([userId], map: "UserEducation_userId_fkey")
+}
+
+model userexperience {
+  id           Int      @id @default(autoincrement())
+  designation  String
+  organization String
+  location     String
+  startDate    DateTime @db.Date
+  endDate      DateTime @db.Date
+  description  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  userId       Int
+  user         user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserExperience_userId_fkey")
+
+  @@index([userId], map: "UserExperience_userId_fkey")
+}
+
+model userresume {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserResume_userId_fkey")
+
+  @@index([userId], map: "UserResume_userId_fkey")
+}
