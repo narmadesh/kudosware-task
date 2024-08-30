@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   const fileArrayBuffer = await file.arrayBuffer();
 
   await fs.writeFile(
-    path.join("/tmp/" + file.name),
+    "/tmp/" + file.name,
     Buffer.from(fileArrayBuffer)
   );
   const resume = await prisma.userresume.create({
