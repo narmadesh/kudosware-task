@@ -14,13 +14,8 @@ export async function POST(req: NextRequest) {
   const f = body.get("file");
   const file = f as File;
 
-  // const destinationDirPath = path.join(__dirname, "public/upload");
-
   const fileArrayBuffer = await file.arrayBuffer();
 
-  // if (!existsSync(destinationDirPath)) {
-  //   fs.mkdir(destinationDirPath, { recursive: true });
-  // }
   await fs.writeFile(
     path.join("/tmp/" + file.name),
     Buffer.from(fileArrayBuffer)
