@@ -92,9 +92,9 @@ export default function UserResume() {
                         </thead>
                         <tbody className="divide-y-4 divide-gray-200 dark:divide-neutral-700">
                             {
-                                resumes.map((e: Resume) => {
+                                resumes.map((e: Resume,key:number) => {
                                     return (
-                                        <tr className="bg-white rounded-lg">
+                                        <tr className="bg-white rounded-lg" key={key}>
                                             <td className="">{e.name}</td>
                                             <td className="flex gap-4">
                                                 <a href={`/upload/${e.name}`} className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400" target="_blank">View</a>

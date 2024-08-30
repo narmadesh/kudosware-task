@@ -116,9 +116,9 @@ export default function UserExperience() {
                         </thead>
                         <tbody className="divide-y-4 divide-gray-200 dark:divide-neutral-700">
                             {
-                                experiences.map((e: Experience) => {
+                                experiences.map((e: Experience,key:number) => {
                                     return (
-                                        <tr className="bg-white rounded-lg">
+                                        <tr className="bg-white rounded-lg" key={key}>
                                             <td className="">{e.designation}</td>
                                             <td className="">{e.organization}</td>
                                             <td className="">{e.location}</td>
