@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model user {
@@ -28,7 +29,7 @@ model usereducation {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   userId           Int
-  user             user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserEducation_userId_fkey")
+  user             user     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId], map: "UserEducation_userId_fkey")
 }
@@ -44,7 +45,7 @@ model userexperience {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   userId       Int
-  user         user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserExperience_userId_fkey")
+  user         user     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId], map: "UserExperience_userId_fkey")
 }
@@ -55,7 +56,7 @@ model userresume {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId    Int
-  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserResume_userId_fkey")
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId], map: "UserResume_userId_fkey")
 }
