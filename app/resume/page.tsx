@@ -9,7 +9,7 @@ import Modal from "@/components/modal";
 import { Resume } from "@/schemas/resume";
 
 export default function UserResume() {
-    const { data: session } = useSession()
+    const session = useSession()
     const [state, setState] = useState(false);
     const [resumes, setResumes] = useState([]);
     const [resume, setResume] = useState<Resume>();
@@ -113,7 +113,7 @@ export default function UserResume() {
                 <Modal onClose={() => setShowModal(!showModal)} buttonAction={() => saveFormRef?.current?.requestSubmit()} headerText="Add resume" footerButtonText="Save" state={state}>
                     <form onSubmit={saveResume} className="flex flex-col space-y-4 sm:w-96 w-80" encType="multipart/form-data" ref={saveFormRef}>
                         <Input name={"file"} label="Select file" type="file" required />
-                        <input type="hidden" name="userId" value={session?.user?.id} />
+                        <input type="hidden" name="userId" value={session?.data?.user?.id} />
                     </form>
                 </Modal>
                 : null}

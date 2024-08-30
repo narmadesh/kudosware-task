@@ -10,8 +10,8 @@ import toast from "react-hot-toast";
 export default function Login() {
   const [state, setState] = useState(false);
   const router = useRouter();
-  const { data: session, status } = useSession()
-  if (status === 'authenticated') {
+  const session = useSession()
+  if (session?.status === 'authenticated') {
     router.push('/education')
   }
   const submit = async (e: FormEvent<HTMLFormElement>) => {

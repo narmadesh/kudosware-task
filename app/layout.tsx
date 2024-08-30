@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SessionProvider, useSession } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { Toaster } from "react-hot-toast";
 
@@ -18,11 +18,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { data: session } = useSession();
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SessionProvider session={session}>
+        <SessionProvider>
           <Toaster
             position="top-right"
             reverseOrder={false}

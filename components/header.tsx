@@ -7,7 +7,7 @@ export default function Header() {
     const [showDropdown, setShowDropdown] = useState(false)
     const [showMobileNav, setShowMobileNav] = useState(false)
     const router = useRouter()
-    const { data: session, status } = useSession()
+    const session = useSession()
     const logout = () => {
         setShowDropdown(false)
         signOut({ redirect: false }).then(() => {
@@ -51,7 +51,7 @@ export default function Header() {
                                 <button type="button" className="relative flex rounded-full bg-gray-800 text-sm" id="user-menu-button" aria-expanded="false" aria-haspopup="true" onClick={() => setShowDropdown(!showDropdown)}>
                                     <span className="absolute -inset-1.5"></span>
                                     <span className="sr-only">Open user menu</span>
-                                    <span className="text-white">Hi {session?.user?.name}</span>
+                                    <span className="text-white">Hi {session?.data?.user?.name}</span>
                                 </button>
                             </div>
                             <div className={`absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${showDropdown ? '' : 'hidden'}`} role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">

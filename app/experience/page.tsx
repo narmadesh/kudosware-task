@@ -9,7 +9,7 @@ import Modal from "@/components/modal";
 import { Experience } from "@/schemas/experience";
 
 export default function UserExperience() {
-    const { data: session } = useSession()
+    const session = useSession()
     const [state, setState] = useState(false);
     const [experiences, setExperiences] = useState([]);
     const [experience, setExperience] = useState<Experience>();
@@ -147,7 +147,7 @@ export default function UserExperience() {
                         <Input name={"startDate"} label="Start date" type="date" required />
                         <Input name={"endDate"} label="Start date" type="date" required />
                         <Input name={"description"} label="Describe your role" type="text" />
-                        <input type="hidden" name="userId" value={session?.user?.id} />
+                        <input type="hidden" name="userId" value={session?.data?.user?.id} />
                     </form>
                 </Modal>
                 : null}

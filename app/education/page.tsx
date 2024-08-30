@@ -9,7 +9,7 @@ import Modal from "@/components/modal";
 import { Education } from "@/schemas/educaton";
 
 export default function UserEducation() {
-    const { data: session } = useSession()
+    const session = useSession()
     const [state, setState] = useState(false);
     const [educations, setEducations] = useState([]);
     const [education, setEducation] = useState<Education>();
@@ -141,7 +141,7 @@ export default function UserEducation() {
                         <Input name={"university"} label="University / Board" type="text" required />
                         <Input name={"yearOfCompletion"} label="Year of completion" type="number" required />
                         <Input name={"score"} label="Score" type="number" required />
-                        <input type="hidden" name="userId" value={session?.user?.id} />
+                        <input type="hidden" name="userId" value={session?.data?.user?.id} />
                     </form>
                 </Modal>
                 : null}
