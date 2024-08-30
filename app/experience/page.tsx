@@ -122,8 +122,8 @@ export default function UserExperience() {
                                             <td className="">{e.designation}</td>
                                             <td className="">{e.organization}</td>
                                             <td className="">{e.location}</td>
-                                            <td className="">{e.startDate}</td>
-                                            <td className="">{e.endDate}</td>
+                                            <td className="">{new Date(e?.startDate as string).toISOString().split('T')[0]}</td>
+                                            <td className="">{new Date(e?.endDate as string).toISOString().split('T')[0]}</td>
                                             <td className="">{e.description}</td>
                                             <td className="flex gap-4">
                                                 <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400" onClick={() => { setShowModal(!showModal); setType('edit'); setExperience(e) }}>Edit</button>
